@@ -11,12 +11,10 @@ if ( isset($_POST['add']) ) {
         
     if ( strlen($_POST['make']) < 1 )
     {
-        $_SESSION['error'] = "Make is required";
-        header("Location: add.php");
+        $_SESSION['error'] = "Make is required";        
     }
     else if ( !is_numeric($_POST['mileage']) || !is_numeric($_POST['year']) ){
         $_SESSION['error'] = "Mileage and year must be numeric";
-        header("Location: add.php");
     }
     else {
         $send_query = $pdo->prepare("INSERT INTO autos ( make, year, mileage ) VALUES (:mk,:yr,:mi)");
@@ -26,8 +24,6 @@ if ( isset($_POST['add']) ) {
             ':mi'=>$_POST['mileage']
             ));
         $_SESSION['added'] = "Record inserted";
-        header("Location: view.php");
-
     }
     
 }
