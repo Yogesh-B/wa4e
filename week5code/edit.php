@@ -45,7 +45,7 @@ if ( isset($_POST['add']) ) {  //updates data
         return;
     }
     else {
-        $send_query = $pdo->prepare("INSERT INTO autos ( make, model, year, mileage ) VALUES (:mk, :md, :yr,:mi)");
+        $send_query = $pdo->prepare("UPDATE autos SET make= :mk, model= :md, year= :yr, mileage= :mi  WHERE autos_id=$get1");
         $send_query->execute(array(
             ':mk'=>$_POST['make'],
             ':md'=>$_POST['model'],
